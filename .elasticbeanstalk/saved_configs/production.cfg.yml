@@ -1,0 +1,54 @@
+AWSConfigurationTemplateVersion: 1.1.0.0
+EnvironmentTier:
+  Name: WebServer
+  Type: Standard
+OptionSettings:
+  aws:autoscaling:launchconfiguration:
+    EC2KeyName: aws-eb
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    InstanceType: t2.small
+    SecurityGroups: labstep-rds-production
+  aws:autoscaling:asg:
+    MaxSize: '4'
+    MinSize: '2'
+  aws:autoscaling:updatepolicy:rollingupdate:
+    RollingUpdateEnabled: true
+    RollingUpdateType: Health
+  aws:elasticbeanstalk:cloudwatch:logs:
+    DeleteOnTerminate: 'true'
+    RetentionInDays: '7'
+    StreamLogs: 'true'
+  aws:elasticbeanstalk:application:environment:
+    ENV_NAME: production
+    PARAMS_FILE: parameters_production.yml
+    HOST_NAME: 'www.labstep.com labstep.com'
+    REDISCLI_HOST: master.cache-production.1vah6r.euw1.cache.amazonaws.com
+    REDISCLI_PORT: 6379
+  aws:elasticbeanstalk:command:
+    BatchSize: '30'
+    BatchSizeType: Percentage
+  aws:elasticbeanstalk:environment:
+    ServiceRole: aws-elasticbeanstalk-service-role
+  aws:elasticbeanstalk:healthreporting:system:
+    SystemType: enhanced
+  aws:elasticbeanstalk:hostmanager:
+    LogPublicationControl: 'true'
+  aws:elasticbeanstalk:managedactions:
+    ManagedActionsEnabled: 'true'
+    PreferredStartTime: SUN:10:00
+  aws:elasticbeanstalk:managedactions:platformupdate:
+    InstanceRefreshEnabled: 'true'
+    UpdateLevel: minor
+  aws:elb:listener:443:
+    InstancePort: '80'
+    InstanceProtocol: HTTP
+    ListenerEnabled: 'true'
+    ListenerProtocol: HTTPS
+    PolicyNames: null
+    SSLCertificateId: arn:aws:acm:eu-west-1:224125955144:certificate/f798c8ae-77cd-40ab-8f78-33ef31b002be
+  aws:elb:loadbalancer:
+    CrossZone: true
+  aws:elb:policies:
+    ConnectionDrainingEnabled: true
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:eu-west-1::platform/PHP 7.2 running on 64bit Amazon Linux/2.8.9

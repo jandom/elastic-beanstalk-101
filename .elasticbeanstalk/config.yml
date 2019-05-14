@@ -1,0 +1,10 @@
+branch-defaults:
+  default:
+    environment: Tutorial-test
+global:
+  application_name: tutorial
+  default_ec2_keyname: aws-eb
+  default_platform: php-7.2
+  default_region: eu-west-1
+  profile: eb-cli
+  sc: null

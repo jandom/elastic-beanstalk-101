@@ -1,0 +1,27 @@
+EnvironmentConfigurationMetadata:
+  Description: Configuration created from the EB CLI using "eb config save".
+  DateCreated: '1557687342000'
+  DateModified: '1557687342000'
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:eu-west-1::platform/PHP 7.2 running on 64bit Amazon Linux/2.8.9
+OptionSettings:
+  aws:elasticbeanstalk:hostmanager:
+    LogPublicationControl: true
+  aws:elasticbeanstalk:cloudwatch:logs:
+    StreamLogs: true
+  aws:elasticbeanstalk:environment:
+    ServiceRole: aws-elasticbeanstalk-service-role
+    LoadBalancerType: application
+  aws:ec2:vpc:
+    Subnets: subnet-ba9e40e3,subnet-a3e065d4,subnet-1876eb7d
+    ELBSubnets: subnet-ba9e40e3,subnet-a3e065d4,subnet-1876eb7d
+  aws:elasticbeanstalk:healthreporting:system:
+    SystemType: enhanced
+  AWSEBLoadBalancerSecurityGroup.aws:ec2:vpc:
+    VPCId: vpc-4952f32c
+  aws:autoscaling:launchconfiguration:
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+AWSConfigurationTemplateVersion: 1.1.0.0
