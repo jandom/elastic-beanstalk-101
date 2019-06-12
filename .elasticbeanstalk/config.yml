@@ -1,6 +1,8 @@
 branch-defaults:
   default:
     environment: Tutorial-test
+  master:
+    environment: Tutorial-test-clone
 global:
   application_name: tutorial
   default_ec2_keyname: aws-eb
